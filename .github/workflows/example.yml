@@ -1,0 +1,17 @@
+name: example
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+
+  workflow_dispatch:
+
+jobs:
+  check-env:
+    permissions:
+        issues: write
+
+    uses: epassaro/conda-deps-check/.github/workflows/check.yml@main
+    with:
+      environment-file: environment.yml
+      ignore-file: .jake-ignore-cves
